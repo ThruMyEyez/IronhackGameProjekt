@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Increment Game</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <!--<script src="./src/attacker_entitie.js"></script>-->
+  <script src="./src/utils.js"></script>
+  <script src="./src/ui.js"></script>
+  <script src="./src/entities.js"></script>
+  <script src="./src/maps/maps.js"></script>
+  <script src="./src/player.js"></script>
+  <script src="./src/mapcontroller.js"></script>
+  <script src="./src/input.js"></script>
+  <script src="./src/view.js"></script>
+  <script src="./src/game.js"></script>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="stats">
+    <label class="humans">Humans: <span>0</span></label>
+    <label class="entities">Bots: <span>0</span></label>
+    <label class="fps">FPS:<span>0</span></label>
+  </div>
+  <div class="resources">
+    <label class="energy-val">energy:<span>0</span></label>
+    <label class="res">resources:<span>0</span></label>
+    <label class="time">time:<span>0</span></label>
+  </div>
+  <div class="bars">
+    <div class="energy"><span>energy</span></div>
+  </div>
+
+  <!--<div class="resources"><span>res</span></div>-->
+
+  <div class="menu">
+    <button onclick="game.pauseGame()">Pause</button>
+    <button onclick="">Shop</button>
+    <button onclick="game.player.addEnergy(20)">E cheat</button>
+    <button onclick="game.player.addResource(5)">R cheat</button>
+
+  </div>
+
+  <script src="./src/index.js"></script>
+</body>
+
+</html>
