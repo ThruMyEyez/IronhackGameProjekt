@@ -89,6 +89,10 @@ class View {
     for (const entity of this.game.entities) {
       entity.draw();
     }
+    for (const building of this.game.buildings) {
+      building.draw();
+    }
+
     this.game.ui.draw();
 
     this.test(256, 256, 16, 16); //* For 2D debug

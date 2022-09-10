@@ -80,15 +80,18 @@ class Map {
       }
     }
   }
+
   addBorderToMap() {
     const borders = addBorderBounds(this.mapW, this.mapH, this.tSize);
     borders.forEach(el => {
       this.game.obstacles.push(el);
     });
   }
+
   coords(x, y) {
     return y * this.mapW + x;
   }
+
   mapImages(atlas, x, y, size, toCol, toRow, scale) {
     this.game.ctx.drawImage(atlas, x * size, y * size, size, size, toCol * size, toRow * size, size * scale, size * scale);
   }

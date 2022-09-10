@@ -1,7 +1,5 @@
-//TODO create only one stationary building for humans, which is OP but must be defeated to win game.
-//TODO human building should shoot simple projectiles at Bots.
+//TODO bug building should shoot simple projectiles at Bots.
 //TODO Create Power Ups like hp and dmg multiplier, faster bots. Which could be bought with "resources".
-// TODO so you should have a main mobil entity class and human "tower" building like in tower defense games.
 class Game {
   constructor() {
     this.canvas = document.querySelector("#canvas");
@@ -16,19 +14,22 @@ class Game {
     this.view = new View(this);
     this.mouse = new Mouse(this);
     this.ui = new UI(this);
-    this.map = new Map(this, 60, 70, tileObjects);
+    this.map = new Map(this, 30, 40, tileObjects);
     this.player = new Player(this);
     //Init game functions
     this.mouse.input();
     this.view.draw();
     //? Debug entity
     const bot = new Bot(this, 260, 160, 25, 25);
+    const tower = new BugTower(this, 300, 300, 90, 90, 1000, 1, 160);
     this.entities.push(bot);
+    this.buildings.push(tower);
   }
   newGame() {
     this.gameStopped = false;
     this.obstacles = [];
-    this.human = [];
+    this.buildings = [];
+    this.bugs = [];
     this.projectiles = [];
     this.entities = [];
   }
