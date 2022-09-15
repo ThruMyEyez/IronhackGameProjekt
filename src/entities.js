@@ -44,6 +44,8 @@ class Bot extends MobileEntity {
     this.noticedBugs = [];
     this.isSearching = true;
   }
+
+  /*
   checkObstacleCollision() {
     for (const obstacle of this.game.obstacles) {
       //*check x axis
@@ -72,6 +74,7 @@ class Bot extends MobileEntity {
       //}
     }
   }
+  */
 
   getRandomCoords(mapObj) {
     // Takes the game.map obj and returns tile coords in x & y
@@ -87,7 +90,11 @@ class Bot extends MobileEntity {
       x: randomRow,
       y: randomCol,
       isBugWP: false,
-      centerR: { cx: randomRow + this.game.map.tSize / 2, cy: randomCol + this.game.map.tSize / 2, radius: this.game.map.tSize },
+      centerR: {
+        cx: randomRow + this.game.map.tSize / 2,
+        cy: randomCol + this.game.map.tSize / 2,
+        radius: this.game.map.tSize,
+      },
     };
     this.wayPoints.push(wayPoint);
   }
@@ -108,12 +115,12 @@ class Bot extends MobileEntity {
         this.wayPoints.pop();
       }
       this.chaseMouse();
-    } else if (this.wayPoints.length === 0 && this.isSearching && this.wayPoints.length === 0) {
+    } else if (this.wayPoints.length === 0 && this.isSearching) {
       this.getRandomCoords(this.game.map);
-    }
-    if (this.wayPoints.length > 0) {
-      this.moveToWaypoint(0);
-      if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && !this.wayPoints[0].isBugWP) {
+    } else if (this.wayPoints.length > 0) {
+      const waypoint = this.wayPoints[0];
+      this.moveToWaypoint(waypoint);
+      if (isPointInCircle(this.x, this.y, waypoint.centerR) && !waypoint.isBugWP) {
         this.wayPoints.shift();
       }
     }
@@ -207,20 +214,27 @@ class Bot extends MobileEntity {
     this.angle = getAngle(this.game.mouse, this);
     //followObj(this, this.game.mouse);
   }
-  moveToWaypoint(wpIdx) {
+
+  moveToWaypoint(waypoint) {
     //move to idx of waypoint in arr or go to first element in arr
-    const wp = wpIdx || 0;
-    this.dx = this.wayPoints[wp].x - this.x;
-    this.dy = this.wayPoints[wp].y - this.y;
+    this.dx = waypoint.x - this.x;
+    this.dy = waypoint.y - this.y;
+
+    // Ensure hypothenuse is not 0
+    // We do not want to divide by 0
     const hypot = Math.sqrt(this.dx ** 2, this.dy ** 2);
-    this.dx = this.dx / hypot;
-    this.dy = this.dy / hypot;
+    if (hypot > 0) {
+      this.dx = this.dx / hypot;
+      this.dy = this.dy / hypot;
+    }
+
     //this.x += Math.cos(this.rotation) * this.speed;
     //this.y += Math.sin(this.rotation) * this.speed;
     this.x += this.dx * this.speed;
     this.y += this.dy * this.speed;
-    this.angle = getAngle(this.wayPoints[wp], this);
+    this.angle = getAngle(waypoint, this);
   }
+
   teleportToWaypoint() {
     //teleport to first WP in arr
     this.dx = this.wayPoints[0].x - this.x;
@@ -230,6 +244,7 @@ class Bot extends MobileEntity {
     this.y += this.dy * this.speed;
     this.angle = getAngle(this.wayPoints[0], this);
   }
+
   drawWaypoint() {
     // FOR DEBUG // It is invisible
     for (const point of this.wayPoints) {
