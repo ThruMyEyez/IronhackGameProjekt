@@ -116,6 +116,13 @@ class Bot extends MobileEntity {
         this.wayPoints.shift();
       }
     }
+    if (!this.game.player.followMouse && this.wayPoints.length === 0) {
+      this.getRandomCoords(this.game.map);
+      this.moveToWaypoint(0);
+      if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && !this.wayPoints[0].isBugWP) {
+        this.wayPoints.shift();
+      }
+    }
   }
 
   checkNearBugs() {
@@ -236,17 +243,26 @@ class Bot extends MobileEntity {
 
 class Bug extends MobileEntity {
   static MAX_HP = 40;
-  static DMG = 10;
+  static DMG = 5;
   static ATTACK_DISTANCE = 4;
   constructor(game, x, y, width, height, speedX, speedY, damage) {
     super(game, x, y, width, height, speedX, speedY);
     this.maxHP = Bug.MAX_HP;
     this.hp = this.maxHP;
+    this.damage = 5 * 1;
   }
   logic() {
     if (this.hp <= 0) {
       this.removeEntity();
     }
+    //! A little bit of self defense:
+    this.game.entities.forEach(bot => {
+      const contact = rectInRect(this, bot);
+      if (contact && this.game.view.frames % (this.game.view.fps / 2) === 0 && bot.hp > 0) {
+        console.log("defense");
+        bot.hp -= this.damage;
+      }
+    });
   }
   update() {
     this.logic();
