@@ -26,7 +26,7 @@ class Game {
     const bug = new Bug(this, 420, 450, 16, 16, 0.8, 0.8);
     const bug2 = new Bug(this, 820, 650, 16, 16, 0.8, 0.8);
     this.buildings.push(tower);
-    //this.bugs.push(bug);
+    this.bugs.push(bug);
     this.bugs.push(bug2);
   }
   newGame() {

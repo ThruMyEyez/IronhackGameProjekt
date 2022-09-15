@@ -96,10 +96,12 @@ class Bot extends MobileEntity {
     // event triggers on 0 HP
     const idx = this.game.entities.indexOf(this);
     this.game.entities.splice(idx, 1);
+    // TODO Death animation
   }
+
   moveLogic() {
-    if (!this.isSearching) {
-    }
+    //if (!this.isSearching) {
+    //}
     if (this.game.player.followMouse) {
       // follow mouse
       for (let i = 0; i < this.wayPoints.length; i++) {
@@ -115,6 +117,7 @@ class Bot extends MobileEntity {
       }
     }
   }
+
   checkNearBugs() {
     this.radius = Bot.ATTRACTION_RADIUS * 1; //1 as placeholder for Multiplier upgrade.
     this.cx = this.x + this.width / 2;
@@ -136,6 +139,7 @@ class Bot extends MobileEntity {
       }
     });
   }
+
   attack() {
     // const { isSearching, noticedBugs, wayPoints } = this;
     this.attackRate = 1;
@@ -149,11 +153,13 @@ class Bot extends MobileEntity {
         const idxBug = this.noticedBugs.indexOf(bug);
         this.noticedBugs.splice(idxBug, 1);
         this.wayPoints.shift();
+        this.getRandomCoords(this.game.map);
       }
     }
     //if ((!this.isSearching && this.noticedBugs.length > 0, this.wayPoints.isBugWP)) {
     //}
   }
+
   processLogic() {
     this.radius = Bot.ATTRACTION_RADIUS;
     this.checkNearBugs();
