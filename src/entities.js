@@ -108,21 +108,22 @@ class Bot extends MobileEntity {
         this.wayPoints.pop();
       }
       this.chaseMouse();
-    } else if (this.wayPoints.length === 0 && this.isSearching) {
+    } else if (this.wayPoints.length === 0 && this.isSearching && this.wayPoints.length === 0) {
       this.getRandomCoords(this.game.map);
-    } else if (this.wayPoints.length > 0) {
+    }
+    if (this.wayPoints.length > 0) {
       this.moveToWaypoint(0);
       if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && !this.wayPoints[0].isBugWP) {
         this.wayPoints.shift();
       }
     }
-    if (!this.game.player.followMouse && this.wayPoints.length === 0) {
-      this.getRandomCoords(this.game.map);
-      this.moveToWaypoint(0);
-      if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && !this.wayPoints[0].isBugWP) {
-        this.wayPoints.shift();
-      }
-    }
+    //if (!this.game.player.followMouse && this.wayPoints.length === 0) {
+    //  this.getRandomCoords(this.game.map);
+    //  this.moveToWaypoint(0);
+    //  if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && this.wayPoints[0].isBugWP) {
+    //    this.wayPoints.shift();
+    //  }
+    //}
   }
 
   checkNearBugs() {
@@ -153,7 +154,7 @@ class Bot extends MobileEntity {
     for (const bug of this.noticedBugs) {
       const contact = rectInRect(this, bug);
       if (contact && this.game.view.frames % (this.game.view.fps / this.attackRate) === 0) {
-        console.log("attack true");
+        console.log("attack on bug true");
         bug.hp -= this.damage;
       }
       if (bug.hp <= 0) {
@@ -248,7 +249,7 @@ class Bug extends MobileEntity {
   constructor(game, x, y, width, height, speedX, speedY, damage) {
     super(game, x, y, width, height, speedX, speedY);
     this.maxHP = Bug.MAX_HP;
-    this.hp = this.maxHP;
+    this.hp = this.maxHP * 1;
     this.damage = 5 * 1;
   }
   logic() {
@@ -277,6 +278,7 @@ class Bug extends MobileEntity {
     const idx = this.game.bugs.indexOf(this);
     this.game.bugs.splice(idx, 1);
     //!Add Q-bits to player
+    this.game.player.addResource(2);
   }
   testDraw() {
     this.game.ctx.save();

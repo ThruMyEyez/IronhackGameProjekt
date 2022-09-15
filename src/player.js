@@ -8,15 +8,17 @@ class Player {
     this.entityTypes = null;
     this.followMouse = false;
   }
-  spawn() {
-    if (pointInRect(this.game.mouse.x, this.game.mouse.y, this.game.map) && this.energy >= Bot.COST && !this.player.followMouse) {
-      //TODO render entity on map at mouse position before spawn
-      const entity = new Bot(this.game, this.game.mouse.x, this.game.mouse.y, 16, 16);
-      this.energy -= entity.cost;
-      this.game.entities.push(entity);
-      console.log("Bot deployed on Maaaap!");
-    }
-  }
+
+  //spawn() {
+  //  if (pointInRect(this.game.mouse.x, this.game.mouse.y, this.game.map) && this.energy >= Bot.COST && !this.player.followMouse) {
+  //    //TODO render entity on map at mouse position before spawn
+  //    const entity = new Bot(this.game, this.game.mouse.x, this.game.mouse.y, 16, 16);
+  //    this.energy -= entity.cost;
+  //    this.game.entities.push(entity);
+  //    console.log("Bot deployed on Maaaap!");
+  //  }
+  //}
+
   update() {
     //🤦🤦🤦⚠️⚠️
     //this.addEnergy(5);
@@ -43,7 +45,7 @@ class Player {
   energyAmountPercent() {
     return (100 * this.energy) / this.maxEnergy;
   }
-  debug() {
-    console.log("Player object Initialized..");
-  }
+  //debug() {
+  //  console.log("Player object Initialized..");
+  //}
 }

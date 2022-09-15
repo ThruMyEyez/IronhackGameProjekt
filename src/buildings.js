@@ -8,9 +8,9 @@ class StaticBuilding {
     this.cx = this.x + this.width / 2;
     this.cy = this.y + this.height / 2;
   }
-  update() {}
-  logic() {}
-  draw() {}
+  //update() {}
+  //logic() {}
+  //draw() {}
 }
 
 class BugTower extends StaticBuilding {

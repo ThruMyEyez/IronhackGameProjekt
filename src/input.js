@@ -51,10 +51,17 @@ class Keyboard {
   }
   input() {
     window.addEventListener("keydown", ev => {
-      console.log(ev);
+      console.log(ev.code);
       switch (ev.code) {
         case "Space":
           this.game.player.followMouse = this.game.player.followMouse !== true;
+          break;
+        case "ControlLeft":
+          console.log("spam bots button");
+          break;
+        case "KeyP":
+          this.game.pauseGame();
+          console.log("Game Paused");
           break;
       }
     });
