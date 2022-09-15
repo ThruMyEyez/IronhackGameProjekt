@@ -20,7 +20,7 @@ class Mouse {
     this.game.view.dragAround(ev);
     this.x = this.getPosition(ev).x / this.game.view.zoom - this.game.view.offset.x;
     this.y = this.getPosition(ev).y / this.game.view.zoom - this.game.view.offset.y;
-    // console.log("mouseX: " + this.x, "mouseY:" + this.y);
+    //console.log("mouseX: " + this.x, "mouseY:" + this.y);
     // console.log("mouse on map: " + pointInRect(this.x, this.y, this.game.map));
     this.isOnMap = pointInRect(this.x, this.y, this.game.map) ? true : false;
     this.checkForObstacle();
@@ -43,5 +43,20 @@ class Mouse {
         console.log(`Mouse on obstacle with id: ${obstacle.id}`);
       }
     }
+  }
+}
+class Keyboard {
+  constructor(game) {
+    this.game = game;
+  }
+  input() {
+    window.addEventListener("keydown", ev => {
+      console.log(ev);
+      switch (ev.code) {
+        case "Space":
+          this.game.player.followMouse = this.game.player.followMouse !== true;
+          break;
+      }
+    });
   }
 }

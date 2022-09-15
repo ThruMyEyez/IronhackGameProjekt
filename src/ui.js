@@ -7,7 +7,9 @@ class UI {
     this.resUI = document.querySelector(".resources .res");
     this.timeUI = document.querySelector(".resources .time");
     this.energyBar = document.querySelector(".bars .energy");
+    this.bugsUI = document.querySelector(".bugs span");
     this.botsUI = document.querySelector(".entities span");
+    this.followMouseBtn = document.getElementById("follow");
   }
   draw() {
     this.fpsUI.innerText = this.game.view.fps;
@@ -16,6 +18,12 @@ class UI {
     this.timeUI.innerText = `T: ${this.game.time}`;
     //this.fpsUI.style.display = "none";
     this.energyBar.style.width = `${this.game.player.energyAmountPercent()}%`;
+    this.bugsUI.innerText = this.game.bugs.length;
     this.botsUI.innerText = this.game.entities.length;
+    if (this.game.player.followMouse) {
+      this.followMouseBtn.style.color = "red";
+    } else {
+      this.followMouseBtn.style.color = "white";
+    }
   }
 }

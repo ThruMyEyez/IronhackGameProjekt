@@ -10,8 +10,8 @@ const isPointInCircle = (x, y, arcObj) => {
 const rectInRect = (rect1, rect2) =>
   !(rect1.x > rect2.x + rect2.width || rect1.x + rect1.width < rect2.x || rect1.y > rect2.y + rect2.height || rect1.y + rect1.height < rect2.y);
 //* IDEA: perhaps don't draw angle but set TOP DOWN LEFT RIGHT sprite direction based on getAngle */
-const getAngle = (obj1, obj2) => Math.atan2(obj1.y - obj2.y, obj1.y - obj2.x) * (180 / Math.PI);
-
+const getAngle = (obj1, obj2) => Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x) * (180 / Math.PI);
+const getAngleRad = (obj1, obj2) => Math.atan2(obj1.cy - obj2.y, obj1.cx - obj2.x);
 //const distance = (a, b) => Math.hypot(...Object.keys(a).map(el => b[el] - a[el])).toFixed(2);
 //console.log(distance([0, 0], [1, 1]));
 

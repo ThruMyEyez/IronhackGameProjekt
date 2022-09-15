@@ -6,15 +6,15 @@ class Player {
     this.resources = 0;
     this.maxResources = 20;
     this.entityTypes = null;
-    // this.update();
+    this.followMouse = false;
   }
   spawn() {
-    if (pointInRect(this.game.mouse.x, this.game.mouse.y, this.game.map) && this.energy >= Bot.COST) {
+    if (pointInRect(this.game.mouse.x, this.game.mouse.y, this.game.map) && this.energy >= Bot.COST && !this.player.followMouse) {
       //TODO render entity on map at mouse position before spawn
       const entity = new Bot(this.game, this.game.mouse.x, this.game.mouse.y, 16, 16);
       this.energy -= entity.cost;
       this.game.entities.push(entity);
-      console.log("Bot deployed on Map!");
+      console.log("Bot deployed on Maaaap!");
     }
   }
   update() {

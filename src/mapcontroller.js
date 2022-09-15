@@ -37,6 +37,7 @@ class Map {
     this.width = this.tSize * this.mapW;
     this.height = this.tSize * this.mapH;
     this.addBorderToMap();
+    this.getMapSize();
   }
   drawMap() {
     //const bgPattern = this.game.ctx.(,"repeat")
@@ -80,7 +81,10 @@ class Map {
       }
     }
   }
-
+  getMapSize() {
+    this.boundMaxX = this.mapW * this.tSize - this.tSize;
+    this.boundMaxY = this.mapH * this.tSize - this.tSize;
+  }
   addBorderToMap() {
     const borders = addBorderBounds(this.mapW, this.mapH, this.tSize);
     borders.forEach(el => {

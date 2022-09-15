@@ -71,7 +71,7 @@ class View {
   tickTimer(val, actualFrames, ticksInSecond) {
     //this.game.time = this.frames % this.fps === 0 ? this.game.time + 1 : this.game.time;
     if (val % (actualFrames / ticksInSecond) === 0) {
-      this.game.time = this.game.time + 1;
+      this.game.time += 1;
       this.game.player.addEnergy(1);
     }
   }
@@ -90,12 +90,13 @@ class View {
       entity.draw();
     }
     for (const building of this.game.buildings) {
-      building.draw();
+      building.draw(timestamp);
+    }
+    for (const bug of this.game.bugs) {
+      bug.draw();
     }
 
     this.game.ui.draw();
-
-    this.test(256, 256, 16, 16); //* For 2D debug
 
     // rAF loop
     const run = () => requestAnimationFrame(this.draw.bind(this));
