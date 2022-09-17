@@ -34,9 +34,7 @@ class BugTower extends StaticBuilding {
       if (isInRange) {
         // console.log("bot in range - can attack");
         this.angle = getAngle(entity, this);
-
         this.startAttack(entity);
-        // console.log(this.angle);
       }
     }
 
@@ -48,9 +46,6 @@ class BugTower extends StaticBuilding {
     }
   }
 
-  update() {
-    this.logic();
-  }
   draw() {
     this.logic();
     this.game.ctx.save();
@@ -87,12 +82,13 @@ class BugTower extends StaticBuilding {
     this.game.ctx.strokeRect(this.x, this.y - 6, this.width, 3);
     this.game.ctx.restore();
   }
-  //Prototype
+  //Prototype Attack Pattern
   startAttack(target) {
     if (this.game.view.frames % (this.game.view.fps / 2) === 0) {
       const attackerIdx = this.game.buildings.indexOf(this);
       const angleRad = getAngleRad(this, target);
       const bullet = new Projectile(this.game, this.cx, this.cy, 1, 1, 10, 10, 30, angleRad, attackerIdx);
+      playLaserAudio();
       this.projectiles.push(bullet);
     }
   }

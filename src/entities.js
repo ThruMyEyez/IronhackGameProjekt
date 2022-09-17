@@ -296,6 +296,11 @@ class Bug extends MobileEntity {
     this.game.bugs.splice(idx, 1);
     //!Add Q-bits to player
     this.game.player.addResource(2);
+    const bugDestroyAudio = () => {
+      const audio = new Audio("/assets/sound/bugDestroy.wav");
+      audio.play();
+    };
+    bugDestroyAudio();
   }
   testDraw() {
     this.game.ctx.save();

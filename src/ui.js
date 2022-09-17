@@ -22,9 +22,9 @@ class UI {
     this.bugsUI.innerText = this.game.bugs.length;
     this.botsUI.innerText = this.game.entities.length;
     if (this.game.player.followMouse) {
-      this.followMouseBtn.style.color = "red";
+      this.followMouseBtn.style.color = "orange ";
     } else {
-      this.followMouseBtn.style.color = "white";
+      this.followMouseBtn.style.color = "#ccc";
     }
   }
 }

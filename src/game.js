@@ -7,7 +7,7 @@ class Game {
     this.bugAmount = bugAmount;
     this.canvas = document.querySelector("#canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.time = 240;
+    this.time = 2;
     this.init();
   }
   init() {
@@ -87,6 +87,7 @@ class Game {
   }
   win() {
     console.log("win");
+    playWinAudio();
     this.gameStopped = true;
     this.gameWinScreenElement.style.display = "";
   }
