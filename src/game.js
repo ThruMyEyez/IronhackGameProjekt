@@ -7,7 +7,7 @@ class Game {
     this.bugAmount = bugAmount;
     this.canvas = document.querySelector("#canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.time = 2;
+    this.time = 240;
     this.init();
   }
   init() {
