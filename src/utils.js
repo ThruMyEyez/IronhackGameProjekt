@@ -12,8 +12,8 @@ const rectInRect = (rect1, rect2) =>
 //* IDEA: perhaps don't draw angle but set TOP DOWN LEFT RIGHT sprite direction based on getAngle */
 const getAngle = (obj1, obj2) => Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x) * (180 / Math.PI);
 const getAngleRad = (obj1, obj2) => Math.atan2(obj1.cy - obj2.y, obj1.cx - obj2.x);
-//const distance = (a, b) => Math.hypot(...Object.keys(a).map(el => b[el] - a[el])).toFixed(2);
-//console.log(distance([0, 0], [1, 1]));
+const distance = (a, b) => Math.hypot(...Object.keys(a).map(el => b[el] - a[el])).toFixed(2);
+console.log(distance([0, 0], [1, 1]));
 const playLaserAudio = () => {
   const audio = new Audio("/assets/sound/towerBullet.wav");
   audio.play();
@@ -24,6 +24,14 @@ const playWinAudio = () => {
 };
 const playLooseAudio = () => {
   const audio = new Audio("/assets/sound/gameOver.wav");
+  audio.play();
+};
+const botDestroyedAudio = () => {
+  const audio = new Audio("/assets/sound/gameOver.wav");
+  audio.play();
+};
+const popAudio = () => {
+  const audio = new Audio("/assets/sound/ballPop.wav");
   audio.play();
 };
 // TODO:  randomFromArray func
@@ -42,7 +50,7 @@ const playLooseAudio = () => {
 //! that idea could be a shot in my own leg...
 
 /*  
-class Utils {
+class Utils { // 🚩 DON'T DO IT 
   constructor(game) {
     this.game = game;
     this.helper();

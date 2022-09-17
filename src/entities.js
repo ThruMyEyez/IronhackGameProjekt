@@ -350,6 +350,7 @@ class Projectile extends MobileEntity {
     this.game.ctx.fill();
   }
   disappear() {
+    popAudio();
     const idx = this.game.buildings[this.aggressor].projectiles.indexOf(this);
     this.game.buildings[this.aggressor].projectiles.splice(idx, 1);
   }
