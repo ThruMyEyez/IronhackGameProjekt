@@ -65,6 +65,7 @@ class Keyboard {
           break;
         case "KeyE":
           this.game.player.addEnergy(20);
+          popAudio();
           break;
       }
     });

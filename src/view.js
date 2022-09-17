@@ -32,6 +32,7 @@ class View {
     }
     this.zoom = clamp(this.zoom, [0.6, 2]);
   }
+  /*
   test(posX, posY, width, height) {
     this.game.ctx.save();
     this.game.ctx.fillStyle = "#0095DD";
@@ -46,7 +47,7 @@ class View {
     this.game.ctx.fillRect(posX, posY, width, height);
     this.game.ctx.restore();
     //if (this.i >= 90) this.i = 0;
-  }
+  } */
   calcFPS(timestamp) {
     this.timeLastFrame = (timestamp - this.prevTime) / 1000;
     this.prevTime = timestamp;

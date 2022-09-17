@@ -1,5 +1,5 @@
 //const chara = new Image();
-//chara.src = "/assets/images/blocky_dungeon.png";
+//chara.src = "/assets/images/";
 
 class MobileEntity {
   constructor(game, x, y, width, height, speedX, speedY) {
@@ -128,7 +128,7 @@ class Bot extends MobileEntity {
   }
 
   checkNearBugs() {
-    this.radius = Bot.ATTRACTION_RADIUS * 1; //1 as placeholder for Multiplier upgrade.
+    this.radius = Bot.ATTRACTION_RADIUS * 1; //*1 as placeholder for Multiplier upgrade.
     this.cx = this.x + this.width / 2;
     this.cy = this.y + this.height / 2;
     //* Follow and attack bugs
@@ -271,7 +271,7 @@ class Bug extends MobileEntity {
     if (this.hp <= 0) {
       this.removeEntity();
     }
-    //! A little bit of self defense:
+    //* A little bit of self defense for the bugs:
     this.game.entities.forEach(bot => {
       const contact = rectInRect(this, bot);
       if (contact && this.game.view.frames % (this.game.view.fps / 2) === 0 && bot.hp > 0) {
@@ -292,7 +292,8 @@ class Bug extends MobileEntity {
     // event triggers on 0 HP
     const idx = this.game.bugs.indexOf(this);
     this.game.bugs.splice(idx, 1);
-    //!Add Q-bits to player
+    //*Add Q-bits to player
+    //TODO Make Q-bits spawning to map so that player has to collect them!
     this.game.player.addResource(2);
     const bugDestroyAudio = () => {
       const audio = new Audio("/assets/sound/bugDestroy.wav");

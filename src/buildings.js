@@ -82,7 +82,7 @@ class BugTower extends StaticBuilding {
     this.game.ctx.strokeRect(this.x, this.y - 6, this.width, 3);
     this.game.ctx.restore();
   }
-  //Prototype Attack Pattern
+  //*Prototype Attack Pattern
   startAttack(target) {
     if (this.game.view.frames % (this.game.view.fps / 2) === 0) {
       const attackerIdx = this.game.buildings.indexOf(this);
