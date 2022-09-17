@@ -11,6 +11,7 @@ class UI {
     this.botsUI = document.querySelector(".entities span");
     this.followMouseBtn = document.getElementById("follow");
   }
+
   draw() {
     this.fpsUI.innerText = this.game.view.fps;
     this.energyUI.innerText = `N-RGY: ${this.game.player.energy}`;
