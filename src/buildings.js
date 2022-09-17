@@ -61,13 +61,13 @@ class BugTower extends StaticBuilding {
     this.game.ctx.fillRect(this.x, this.y, this.width * 1, this.height * 1);
     this.game.ctx.restore();
     this.game.ctx.fillStyle = "rgba(255, 0, 0, 0.25)";
-    this.game.ctx.fillRect(this.x, this.y, this.width * 0.9, this.height * 0.9);
+    this.game.ctx.fillRect(this.x + 4, this.y + 4, this.width * 0.9, this.height * 0.9);
     this.game.ctx.save();
     this.game.ctx.translate(this.x + 0.5 * this.width, this.y + 0.5 * this.height);
     this.game.ctx.rotate((Math.PI / 180) * this.angle);
     this.game.ctx.translate(-1 * (this.x + 0.5 * this.width), -1 * (this.y + 0.5 * this.height));
     this.game.ctx.beginPath();
-    this.game.ctx.arc(this.cx, this.cy, this.width, 0, 2 * Math.PI);
+    this.game.ctx.arc(this.cx, this.cy, this.width / 2, 0, 2 * Math.PI);
     this.game.ctx.arc(this.cx, this.cy, this.width / 10, 0, 2 * Math.PI);
     this.game.ctx.closePath();
     this.game.ctx.stroke();
