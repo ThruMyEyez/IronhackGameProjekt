@@ -36,7 +36,6 @@ class BugTower extends StaticBuilding {
         this.angle = getAngle(entity, this);
 
         this.startAttack(entity);
-
         // console.log(this.angle);
       }
     }

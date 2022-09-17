@@ -71,7 +71,7 @@ class View {
   tickTimer(val, actualFrames, ticksInSecond) {
     //this.game.time = this.frames % this.fps === 0 ? this.game.time + 1 : this.game.time;
     if (val % (actualFrames / ticksInSecond) === 0) {
-      this.game.time += 1;
+      this.game.time -= 1;
       this.game.player.addEnergy(1);
     }
   }
@@ -97,7 +97,7 @@ class View {
     }
 
     this.game.ui.draw();
-
+    this.game.player.update();
     // rAF loop
     const run = () => requestAnimationFrame(this.draw.bind(this));
     if (this.game.gameStopped) {

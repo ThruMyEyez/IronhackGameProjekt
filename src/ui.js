@@ -14,8 +14,8 @@ class UI {
 
   draw() {
     this.fpsUI.innerText = this.game.view.fps;
-    this.energyUI.innerText = `N-RGY: ${this.game.player.energy}`;
-    this.resUI.innerText = `Q-Bits: ${this.game.player.resources}`;
+    this.energyUI.innerText = `N-RGY: ${this.game.player.energy} / ${this.game.player.maxEnergy}`;
+    this.resUI.innerText = `Q-Bits: ${this.game.player.resources} / ${this.game.player.maxResources}`;
     this.timeUI.innerText = `T: ${this.game.time}`;
     //this.fpsUI.style.display = "none";
     this.energyBar.style.width = `${this.game.player.energyAmountPercent()}%`;

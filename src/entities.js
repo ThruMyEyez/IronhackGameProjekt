@@ -107,8 +107,9 @@ class Bot extends MobileEntity {
   }
 
   moveLogic() {
-    //if (!this.isSearching) {
-    //}
+    this.x += this.speedX;
+    this.y += this.speedY;
+
     if (this.game.player.followMouse) {
       // follow mouse
       for (let i = 0; i < this.wayPoints.length; i++) {
@@ -124,13 +125,6 @@ class Bot extends MobileEntity {
         this.wayPoints.shift();
       }
     }
-    //if (!this.game.player.followMouse && this.wayPoints.length === 0) {
-    //  this.getRandomCoords(this.game.map);
-    //  this.moveToWaypoint(0);
-    //  if (isPointInCircle(this.x, this.y, this.wayPoints[0].centerR) && this.wayPoints[0].isBugWP) {
-    //    this.wayPoints.shift();
-    //  }
-    //}
   }
 
   checkNearBugs() {
@@ -142,6 +136,7 @@ class Bot extends MobileEntity {
       const isBugNear = isPointInCircle(bug.cx, bug.cy, this);
       if (isBugNear && this.noticedBugs < 1) {
         this.isSearching = false;
+        console.log(1);
         this.noticedBugs.push(bug);
         const bugWP = {
           x: bug.x,
@@ -151,6 +146,10 @@ class Bot extends MobileEntity {
           centerR: { cx: bug.x + bug.width / 2, cy: bug.y + bug.height / 2, radius: 16 },
         };
         this.wayPoints.push(bugWP);
+      }
+      if (!isBugNear) {
+        console.log(21);
+        //this.isSearching = true;
       }
     });
   }
@@ -181,6 +180,10 @@ class Bot extends MobileEntity {
     if (!this.isSearching && this.noticedBugs.length > 0) {
       this.attack();
     }
+    if (!this.isSearching && this.wayPoints.length === 0) {
+      this.isSearching = true;
+    }
+    this.moveLogic();
     if (this.hp <= 0) {
       this.removeEntity();
     }
@@ -190,8 +193,6 @@ class Bot extends MobileEntity {
     this.moveLogic();
     this.drawWaypoint();
     this.healthBar();
-    this.x += this.speedX;
-    this.y += this.speedY;
     this.game.ctx.save();
     this.game.ctx.fillStyle = "yellow";
     this.game.ctx.translate(this.x + 0.5 * this.width, this.y + 0.5 * this.height);
@@ -200,6 +201,7 @@ class Bot extends MobileEntity {
     this.game.ctx.fillRect(this.x, this.y, this.width * 1, this.height * 1);
     this.game.ctx.restore();
   }
+
   chaseMouse() {
     //* Distance to x and to y of mouse
     this.dx = this.game.mouse.x - this.x;

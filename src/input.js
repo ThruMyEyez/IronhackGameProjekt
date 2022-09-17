@@ -63,6 +63,9 @@ class Keyboard {
           this.game.pauseGame();
           console.log("Game Paused");
           break;
+        case "KeyE":
+          this.game.player.addEnergy(20);
+          break;
       }
     });
   }

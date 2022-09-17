@@ -20,9 +20,12 @@ class Player {
   //}
 
   update() {
-    //🤦🤦🤦⚠️⚠️
-    //this.addEnergy(5);
-    // ###
+    if (this.game.time === 0 && this.game.bugs.length > 0) {
+      this.game.lose();
+    }
+    if (this.game.bugs.length === 0) {
+      this.game.win();
+    }
   }
   addEnergy(amount) {
     this.energy += amount;

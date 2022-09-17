@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
   <canvas id="canvas"></canvas>
   <div class="stats">
     <label class="bugs">Bugs: <span>0</span></label>
@@ -33,7 +34,7 @@
     <label class="time">time:<span>0</span></label>
   </div>
   <div class="bars">
-    <div class="energy"><span>energy</span></div>
+    <div class="energy"><span></span></div>
   </div>
 
   <!--<div class="resources"><span>res</span></div>-->
@@ -42,11 +43,19 @@
     <button id="pause" onclick="game.pauseGame()">Pause</button>
     <button id="upgrades" onclick="">Shop</button>
     <button id="follow" onclick="game.player.followMouse = game.player.followMouse !== true">Follow (space)</button>
-    <button onclick="game.player.addEnergy(20)">E cheat</button>
+    <button onclick="game.player.addEnergy(20)">E cheat (e)</button>
     <button onclick="game.player.addResource(5)">R cheat</button>
 
   </div>
-
+  <div id="game-over-screen" class="screen" style="display: none;">
+    <h2>Game Over</h2>
+    <button onClick="window.location.reload();">New Game</button>
+  </div>
+  <div id="game-win-screen" class="screen" style="display: none;">
+    <h2>Congratulations!</h2>
+    <p>You debugged the System and won the Game</p>
+    <button onClick="window.location.reload();">New Game</button>
+  </div>
   <script src="./src/index.js"></script>
 </body>
 
