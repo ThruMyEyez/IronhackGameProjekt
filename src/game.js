@@ -34,8 +34,6 @@ class Game {
       const randomY = mapY => {
         return Math.floor(Math.random() * mapY) - this.map.tSize * 2;
       };
-      console.log(mapW, mapH, this.bugAmount, mapW * this.map.tSize);
-      console.log(randomX(mapX));
       const bug = new Bug(
         this,
         clamp(randomX(mapX), [this.map.tSize * 2, mapW * this.map.tSize - this.map.tSize * 2]),

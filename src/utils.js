@@ -12,8 +12,10 @@ const rectInRect = (rect1, rect2) =>
 //* IDEA: perhaps don't draw angle but set TOP DOWN LEFT RIGHT sprite direction based on getAngle */
 const getAngle = (obj1, obj2) => Math.atan2(obj1.y - obj2.y, obj1.x - obj2.x) * (180 / Math.PI);
 const getAngleRad = (obj1, obj2) => Math.atan2(obj1.cy - obj2.y, obj1.cx - obj2.x);
+
 const distance = (a, b) => Math.hypot(...Object.keys(a).map(el => b[el] - a[el])).toFixed(2);
 console.log(distance([0, 0], [1, 1]));
+
 const playLaserAudio = () => {
   const audio = new Audio("/assets/sound/towerBullet.wav");
   audio.play();

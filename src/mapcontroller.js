@@ -69,7 +69,7 @@ class Map {
         //this.game.ctx.fillStyle = this.tTypes[this.tiles[this.coords(j, i)]].colour; //image coords
         this.game.ctx.fillRect(j * this.tSize, i * this.tSize, this.tSize, this.tSize);
         this.game.ctx.restore();
-        //! Get atlas images
+        //* Get atlas images
         const cacheAtlasCoords = this.tTypes[this.tiles[this.coords(j, i)]].atlasCoords,
           cacheSpriteSize = this.tTypes[this.tiles[this.coords(j, i)]].nativeSize;
         this.mapImages(mapAtlas, cacheAtlasCoords[0], cacheAtlasCoords[1], cacheSpriteSize, j, i, 1);

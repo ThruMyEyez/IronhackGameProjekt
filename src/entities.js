@@ -148,7 +148,7 @@ class Bot extends MobileEntity {
         this.wayPoints.push(bugWP);
       }
       if (!isBugNear) {
-        console.log(21);
+        //console.log(1);
         //this.isSearching = true;
       }
     });
