@@ -61,7 +61,7 @@ class Game {
   }
 
   pauseGame() {
-    console.log(1);
+    console.log("Game Paused");
     if (!this.gameStopped) {
       this.gameStopped = true;
     } else {
@@ -82,6 +82,7 @@ class Game {
   }
   lose() {
     console.log("lose");
+    playLooseAudio();
     this.gameOverScreenElement.style.display = "";
     this.gameStopped = true;
   }

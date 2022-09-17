@@ -170,8 +170,6 @@ class Bot extends MobileEntity {
         this.getRandomCoords(this.game.map);
       }
     }
-    //if ((!this.isSearching && this.noticedBugs.length > 0, this.wayPoints.isBugWP)) {
-    //}
   }
 
   processLogic() {

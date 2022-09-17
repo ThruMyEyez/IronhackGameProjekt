@@ -34,8 +34,6 @@ const mapGen = (mapW, mapH) => {
   return mapArr;
 };
 
-//console.log(mapGen(60, 80).length);
-//console.log(mapGen(60, 80));
 function addBorderBounds(mapW, mapH, tSize) {
   const borderTopBoundary = { x: 0, y: 0, width: mapW * tSize, height: 2 * tSize, id: "top" };
   const borderLeftBoundary = { x: 0, y: tSize * 2, width: tSize, height: (mapH - 3) * tSize, id: "left" };
@@ -43,4 +41,4 @@ function addBorderBounds(mapW, mapH, tSize) {
   const borderBottomBoundary = { x: 0, y: (mapH - 1) * tSize, width: mapW * tSize, height: tSize, id: "bottom" };
   return [borderTopBoundary, borderLeftBoundary, borderRightBoundary, borderBottomBoundary];
 }
-console.log(addBorderBounds(60, 70, 16));
+//console.log(addBorderBounds(60, 70, 16));

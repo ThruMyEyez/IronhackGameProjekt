@@ -4,7 +4,6 @@ const floorTypes = {
   void: 0,
   obstacle: 0,
   floor: 1,
-  water: 2,
 };
 const tileObjects = [
   { id: "mapVoid", atlasCoords: [1, 1], nativeSize: 16, floor: floorTypes.void },

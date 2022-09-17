@@ -22,6 +22,10 @@ const playWinAudio = () => {
   const audio = new Audio("/assets/sound/fanfare.wav");
   audio.play();
 };
+const playLooseAudio = () => {
+  const audio = new Audio("/assets/sound/gameOver.wav");
+  audio.play();
+};
 // TODO:  randomFromArray func
 //* construction section for TODO functions ==>
 //const followObj = (thisObj, toFollowObj) => {

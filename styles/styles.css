@@ -73,6 +73,23 @@ div.bars .energy {
 
 }
 
+div.timebar {
+  margin-top: 3px;
+  height: 1rem;
+  width: 180px;
+  background-color: rgba(30, 80, 100, 0.8);
+  border: 1px solid #999999;
+}
+
+div.timebar .time {
+
+  background-color: cadetblue;
+  border: 2px solid #000;
+  height: 100%;
+  width: 100%;
+
+}
+
 /* div.bars .resources {
 
   background-color: cadetblue;
