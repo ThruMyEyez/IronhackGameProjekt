@@ -29,10 +29,12 @@ const getAngleRad = (obj1, obj2) => Math.atan2(obj1.cy - obj2.y, obj1.cx - obj2.
 //};
 //
 //! that idea could be a shot in my own leg...
+
+/*
 class Utils {
   constructor(game) {
     this.game = game;
     this.helper();
   }
   helper() {}
-}
+} */

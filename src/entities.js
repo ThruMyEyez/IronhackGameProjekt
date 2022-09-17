@@ -191,7 +191,7 @@ class Bot extends MobileEntity {
   draw() {
     this.processLogic();
     this.moveLogic();
-    this.drawWaypoint();
+    //this.drawWaypoint();
     this.healthBar();
     this.game.ctx.save();
     this.game.ctx.fillStyle = "yellow";
